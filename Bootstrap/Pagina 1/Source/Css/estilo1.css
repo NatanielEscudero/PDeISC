@@ -1,0 +1,17 @@
+.header{
+
+    background-color: rgb(228, 228, 228);
+
+}
+
+.tipos{
+    border-bottom: color rgb(174, 255, 174);
+    background-color: rgb(228, 228, 228);
+
+
+}
+
+.footer{
+    height: 10vh;
+    background-color: rgb(228, 228, 228);
+}
