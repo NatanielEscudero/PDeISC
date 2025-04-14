@@ -1,0 +1,41 @@
+ejemplos de uso de npm:
+
+    Upper-case
+
+Para instalar el modulo usamos en consola
+
+    npm install upper-case --save
+
+Ejemplo de uso del modulo
+
+    import { upperCase, localeUpperCase } from "upper-case";
+
+    upperCase("string"); //convierte el string en mayusculas
+
+    
+    just modulo
+
+Para instalar el modulo usamos en consola
+
+    npm i just-modulo
+
+Ejemplo de uso del modulo
+
+    import modulo from 'just-modulo';
+
+    modulo(7, 5); // 2
+
+    float
+
+Para instalar el modulo usamos en consola
+
+    npm i float
+
+Ejemplo de uso
+
+    var f = require('float');
+
+    var a = 2.15;
+    var b = 3.46;
+    var c = 5.61;
+    var ab = f.round(a + b);
