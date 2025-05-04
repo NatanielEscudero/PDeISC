@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../partials/header', {title}) %>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Tareas</h1>
+        <div class="todo-app">
+            <input type="text" id="task-input" placeholder="Añade una nueva tarea...">
+            <button id="add-task">Añadir</button>
+            <ul id="task-list"></ul>
+        </div>
+        <a href="/" class="btn back">Volver al Inicio</a>
+    </div>
+    
+    <script src="/scripts/components/component2.js"></script>
+    <%- include('../partials/footer') %>
+</body>
+</html>

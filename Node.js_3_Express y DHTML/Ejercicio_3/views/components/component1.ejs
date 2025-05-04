@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../partials/header', {title}) %>
+</head>
+<body>
+    <div class="container">
+        <h1>Contador</h1>
+        <div class="counter">
+            <span id="count">0</span>
+            <div class="counter-buttons">
+                <button class="btn" id="decrement">-</button>
+                <button class="btn" id="reset">Reset</button>
+                <button class="btn" id="increment">+</button>
+            </div>
+        </div>
+        <a href="/" class="btn back">Volver al Inicio</a>
+    </div>
+    
+    <script src="/scripts/components/component1.js"></script>
+    <%- include('../partials/footer') %>
+</body>
+</html>

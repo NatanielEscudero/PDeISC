@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('partials/header', {title}) %>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido al Proyecto de Componentes</h1>
+        <p>Selecciona un componente para interactuar:</p>
+        
+        <div class="button-grid">
+            <a href="/component1" class="btn">Contador</a>
+            <a href="/component2" class="btn">Lista de Tareas</a>
+            <a href="/component3" class="btn">Galería de Imágenes</a>
+            <a href="/component4" class="btn">Formulario de Contacto</a>
+            <a href="/component5" class="btn">Reloj Digital</a>
+        </div>
+    </div>
+    
+    <%- include('partials/footer') %>
+</body>
+</html>

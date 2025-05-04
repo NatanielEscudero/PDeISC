@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #e6d8b5;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #e6d8b5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Controles */
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: d2b48c;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+#modifyLinks {
+    background-color: #e67e22;
+}
+
+#modifyLinks:hover {
+    background-color: #d35400;
+}
+
+#resetLinks {
+    background-color: #e74c3c;
+}
+
+#resetLinks:hover {
+    background-color: #c0392b;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.link-item {
+    display: block;
+    padding: 12px 15px;
+    background-color: #d2b48c;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #2c3e50;
+    transition: all 0.3s;
+    border-left: 4px solid #3498db;
+}
+
+.link-item:hover {
+    background-color: #d6eaf8;
+    transform: translateX(5px);
+}
+
+/* Registro de cambios */
+.log-container {
+    background-color: #d2b48c;
+    border-radius: 4px;
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+.log-container h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.log-content {
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: monospace;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.log-entry {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #34495e;
+}
+
+.log-entry:last-child {
+    border-bottom: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}

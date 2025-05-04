@@ -1,0 +1,22 @@
+#dynamicImage {
+    width: 200px;
+    height: auto;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6d8b5;
+    margin: 0;
+    padding: 20px;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover {
+    background-color: #45a049;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../partials/header', {title}) %>
+</head>
+<body>
+    <div class="container">
+        <h1>Reloj Digital</h1>
+        <div class="clock">
+            <div id="time"></div>
+            <div id="date"></div>
+        </div>
+        <div class="clock-controls">
+            <button class="btn" id="toggle-format">Cambiar Formato 12/24h</button>
+        </div>
+        <a href="/" class="btn back">Volver al Inicio</a>
+    </div>
+    
+    <script src="/scripts/components/component5.js"></script>
+    <%- include('../partials/footer') %>
+</body>
+</html>

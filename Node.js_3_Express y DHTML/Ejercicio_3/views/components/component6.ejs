@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../partials/header', {title}) %>
+</head>
+<body>
+    <div class="container">
+        <h1>Contador de Hijos</h1>
+        <p>Haz clic en cualquier elemento para ver cuántos hijos tiene</p>
+        
+        <div class="family-container">
+            <div class="parent" id="grandparent">
+                Abuelo
+                <div class="children-container">
+                    <div class="parent" id="parent1">
+                        Padre 1
+                        <div class="children-container">
+                            <div class="child">Hijo 1</div>
+                            <div class="child">Hijo 2</div>
+                        </div>
+                    </div>
+                    <div class="parent" id="parent2">
+                        Padre 2
+                        <div class="children-container">
+                            <div class="child">Hijo 3</div>
+                            <div class="child">Hijo 4</div>
+                            <div class="child">Hijo 5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="counter-display" id="counterDisplay">
+            Haz clic en un elemento para ver cuántos hijos directos tiene
+        </div>
+        
+        <a href="/" class="btn back">Volver al Inicio</a>
+    </div>
+    
+    <script src="/scripts/components/component6.js"></script>
+    <%- include('../partials/footer') %>
+</body>
+</html>
