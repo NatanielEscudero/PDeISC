@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Personas</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Registro de Personas</h1>
+    
+    <div id="message"></div>
+    
+    <form id="personaForm">
+      <h2>Información Personal</h2>
+      <div class="form-group">
+        <label>Nombre:</label>
+        <input type="text" name="nombre">
+      </div>
+      
+      <div class="form-group">
+        <label>Apellido:</label>
+        <input type="text" name="apellido">
+      </div>
+      
+      <div class="form-group">
+        <label>Edad:</label>
+        <input type="number" name="edad">
+      </div>
+      
+      <div class="form-group">
+        <label>Fecha de Nacimiento:</label>
+        <input type="date" name="fecha_nacimiento">
+      </div>
+      
+      <div class="form-group">
+        <label>Sexo:</label>
+        <select name="sexo">
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+      </div>
+      
+      <h2>Documentación</h2>
+      <div class="form-group">
+        <label>Documento:</label>
+        <input type="number" name="documento">
+      </div>
+      
+      <div class="form-group">
+        <label>Estado Civil:</label>
+        <select name="estado_civil">
+          <option value="Soltero/a">Soltero/a</option>
+          <option value="Casado/a">Casado/a</option>
+          <option value="Divorciado/a">Divorciado/a</option>
+          <option value="Viudo/a">Viudo/a</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Nacionalidad:</label>
+        <input type="text" name="nacionalidad">
+      </div>
+      
+      <h2>Contacto</h2>
+      <div class="form-group">
+        <label>Teléfono:</label>
+        <input type="tel" name="telefono">
+      </div>
+      
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" name="email">
+      </div>
+      
+      <h2>Hijos</h2>
+      <div class="form-group">
+        <label>Cantidad de hijos:</label>
+        <input type="number" name="hijos" value="0" min="0">
+      </div>
+      
+      <button type="submit">Registrar</button>
+    </form>
+    
+    <h2>Personas Registradas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Edad</th>
+          <th>Documento</th>
+          <th>Teléfono</th>
+        </tr>
+      </thead>
+      <tbody id="personasTable">
+        <% personas.forEach(persona => { %>
+          <tr>
+            <td><%= persona.nombre %></td>
+            <td><%= persona.apellido %></td>
+            <td><%= persona.edad %></td>
+            <td><%= persona.documento %></td>
+            <td><%= persona.telefono %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

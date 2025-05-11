@@ -6,10 +6,11 @@ const PORT = 3000;
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-    res.render("index");  
+    res.render("index", { personas });
 });
 
 app.post("/submit", (req, res) => {
@@ -18,11 +19,7 @@ app.post("/submit", (req, res) => {
         pass: req.body.pass
     };
     personas.push(persona);  
-    res.send('Persona agregada <a href="/">Volver</a>');
-});
-
-app.get("/persona", (req, res) => {
-    res.render("persona", { personas });  
+    res.json(personas);
 });
 
 app.listen(PORT, '127.0.0.1', () => {
