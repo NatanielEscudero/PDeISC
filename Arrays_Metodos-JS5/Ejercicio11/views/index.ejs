@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con filter()</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Operaciones con filter()</h1>
+    <div id="message" class="message"></div>
+ 
+    <div class="operacion-container">
+        <h2>1. Números mayores a 10</h2>
+        <div class="array-display">
+            <strong>Números originales:</strong>
+            <div class="array-items">
+                <% numeros.forEach(num => { %>
+                    <span class="array-item <%= num > 10 ? 'destacado' : '' %>"><%= num %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="filtrarNumerosForm" class="filter-form">
+            <button type="submit" class="btn-action">
+                Filtrar números > 10
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="numeros-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>2. Palabras con más de 5 letras</h2>
+        <div class="array-display">
+            <strong>Palabras originales:</strong>
+            <div class="array-items">
+                <% palabras.forEach(palabra => { %>
+                    <span class="array-item <%= palabra.length > 5 ? 'destacado' : '' %>">
+                        <%= palabra %> (<%= palabra.length %>)
+                    </span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="filtrarPalabrasForm" class="filter-form">
+            <button type="submit" class="btn-action">
+                Filtrar palabras > 5 letras
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="palabras-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>3. Usuarios activos</h2>
+        <div class="array-display">
+            <strong>Usuarios originales:</strong>
+            <div class="array-items">
+                <% usuarios.forEach(usuario => { %>
+                    <span class="array-item <%= usuario.activo ? 'destacado' : '' %>">
+                        <%= usuario.nombre %> - <%= usuario.activo ? 'Activo' : 'Inactivo' %>
+                    </span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="filtrarUsuariosForm" class="filter-form">
+            <button type="submit" class="btn-action">
+                Filtrar usuarios activos
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="usuarios-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

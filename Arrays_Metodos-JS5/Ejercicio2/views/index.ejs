@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Dinámico</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h2>Formulario Dinámico</h2>
+    
+    <form id="dataForm">
+        <div class="section">
+            <h3>Animales</h3>
+            <div id="animales-container">
+                <div class="input-group">
+                    <input type="text" name="animal" placeholder="Nombre del animal">
+                    <button type="button" class="btn-remove" onclick="removeField(this)">Eliminar</button>
+                </div>
+            </div>
+            <button type="button" class="btn-add" onclick="addField('animal')">+ Agregar Animal</button>
+        </div>
+        
+        <div class="section">
+            <h3>Lista de compra</h3>
+            <div id="compra-container">
+                <div class="input-group">
+                    <input type="text" name="compra" placeholder="Agregue tarea">
+                    <button type="button" class="btn-remove" onclick="removeField(this)">Eliminar</button>
+                </div>
+            </div>
+            <button type="button" class="btn-add" onclick="addField('compra')">+ Tarea Extra</button>
+        </div>
+        
+        <button type="submit" class="btn-submit">Guardar Todo</button>
+    </form>
+    
+    <div id="message" class="message"></div>
+    
+    <h2>Datos Registrados</h2>
+    <div class="tables-container">
+        <div class="table-wrapper">
+            <div class="table-header">
+                <h3>Animales</h3>
+                <button onclick="eliminarUltimoAnimal()" class="btn-remove">Eliminar último</button>
+            </div>
+            <table id="animalesTable">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (animales && animales.length > 0) { %>
+                        <% animales.forEach(animal => { %>
+                            <tr>
+                                <td><%= animal %></td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td>No hay animales registrados</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="table-wrapper">
+            <div class="table-header">
+                <h3>Lista de compra</h3>
+                <button onclick="eliminarUltimaCompra()" class="btn-remove">Eliminar última</button>
+            </div>
+            <table id="compraTable">
+                <thead>
+                    <tr>
+                        <th>Tarea</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (compras && compras.length > 0) { %>
+                        <% compras.forEach(compra => { %>
+                            <tr>
+                                <td><%= compra %></td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td>No hay tareas registradas</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <button onclick="limpiarTodo()" class="btn-remove">
+            Limpiar todos los datos
+        </button>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

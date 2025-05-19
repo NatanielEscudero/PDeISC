@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con splice()</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Operaciones con splice()</h1>
+    <div id="message" class="message"></div>
+ 
+    <div class="operacion-container">
+        <h2>1. Eliminar elementos</h2>
+        <p>Array original: ['a', 'b', 'c', 'd', 'e', 'f']</p>
+        <div class="array-display">
+            <strong>Letras actuales:</strong>
+            <div id="letras-container" class="array-items">
+                <% letras.forEach(letra => { %>
+                    <span class="array-item"><%= letra %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="eliminarLetrasForm" class="splice-form">
+            <button type="submit" class="btn-action">
+                Eliminar 2 elementos desde posición 1 (splice(1, 2))
+            </button>
+        </form>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>2. Insertar elemento</h2>
+        <div class="array-display">
+            <strong>Nombres actuales:</strong>
+            <div id="nombres-container" class="array-items">
+                <% nombres.forEach(nombre => { %>
+                    <span class="array-item"><%= nombre %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="insertarNombreForm" class="splice-form">
+            <input type="text" name="nombre" placeholder="Nuevo nombre" required>
+            <button type="submit" class="btn-action">
+                Insertar en posición 2 (splice(1, 0, nombre))
+            </button>
+        </form>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>3. Reemplazar elementos</h2>
+        <div class="array-display">
+            <strong>Elementos actuales:</strong>
+            <div id="elementos-container" class="array-items">
+                <% elementos.forEach(elem => { %>
+                    <span class="array-item"><%= elem %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="reemplazarElementosForm" class="splice-form">
+            <div class="form-group">
+                <label for="posicion">Posición inicial:</label>
+                <input type="number" name="posicion" min="0" max="<%= elementos.length - 2 %>" required>
+            </div>
+            <div class="form-group">
+                <label for="nuevo1">Nuevo elemento 1:</label>
+                <input type="text" name="nuevo1" required>
+            </div>
+            <div class="form-group">
+                <label for="nuevo2">Nuevo elemento 2:</label>
+                <input type="text" name="nuevo2" required>
+            </div>
+            <button type="submit" class="btn-action">
+                Reemplazar 2 elementos (splice(pos, 2, nuevo1, nuevo2))
+            </button>
+        </form>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

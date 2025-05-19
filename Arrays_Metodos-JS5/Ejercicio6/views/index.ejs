@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con slice()</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Operaciones con slice()</h1>
+    <div id="message" class="message"></div>
+ 
+    <div class="operacion-container">
+        <h2>1. Copiar primeros 3 elementos</h2>
+        <div class="array-display">
+            <strong>Array original:</strong>
+            <div class="array-items">
+                <% numeros.forEach(num => { %>
+                    <span class="array-item"><%= num %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="copiarNumerosForm" class="slice-form">
+            <button type="submit" class="btn-action">
+                Copiar primeros 3 números (slice(0, 3))
+            </button>
+        </form>
+        <div class="resultado-container">
+            <strong>Resultado:</strong>
+            <div id="numeros-resultado" class="array-items resultado"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>2. Copiar rango específico</h2>
+        <div class="array-display">
+            <strong>Array original:</strong>
+            <div class="array-items">
+                <% peliculas.forEach(peli => { %>
+                    <span class="array-item"><%= peli %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="copiarPeliculasForm" class="slice-form">
+            <button type="submit" class="btn-action">
+                Copiar películas de posición 2 a 4 (slice(2, 5))
+            </button>
+        </form>
+        <div class="resultado-container">
+            <strong>Resultado:</strong>
+            <div id="peliculas-resultado" class="array-items resultado"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>3. Copiar últimos elementos</h2>
+        <div class="array-display">
+            <strong>Array original:</strong>
+            <div class="array-items">
+                <% elementos.forEach(elem => { %>
+                    <span class="array-item"><%= elem %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="copiarElementosForm" class="slice-form">
+            <button type="submit" class="btn-action">
+                Copiar últimos 3 elementos (slice(-3))
+            </button>
+        </form>
+        <div class="resultado-container">
+            <strong>Resultado:</strong>
+            <div id="elementos-resultado" class="array-items resultado"></div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

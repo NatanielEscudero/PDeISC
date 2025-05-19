@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con forEach()</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Operaciones con forEach()</h1>
+    <div id="message" class="message"></div>
+ 
+    <div class="operacion-container">
+        <h2>1. Saludar nombres</h2>
+        <div class="array-display">
+            <strong>Nombres:</strong>
+            <div class="array-items">
+                <% nombres.forEach(nombre => { %>
+                    <span class="array-item"><%= nombre %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="saludarNombresForm" class="foreach-form">
+            <button type="submit" class="btn-action">
+                Generar saludos
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="saludos-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>2. Calcular dobles</h2>
+        <div class="array-display">
+            <strong>Números:</strong>
+            <div class="array-items">
+                <% numeros.forEach(num => { %>
+                    <span class="array-item"><%= num %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="calcularDoblesForm" class="foreach-form">
+            <button type="submit" class="btn-action">
+                Calcular dobles
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="dobles-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>3. Mostrar personas</h2>
+        <div class="array-display">
+            <strong>Personas:</strong>
+            <div class="array-items">
+                <% personas.forEach(persona => { %>
+                    <span class="array-item"><%= persona.nombre %> (<%= persona.edad %>)</span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="mostrarPersonasForm" class="foreach-form">
+            <button type="submit" class="btn-action">
+                Mostrar información
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="personas-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

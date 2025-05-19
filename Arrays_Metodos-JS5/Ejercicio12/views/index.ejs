@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con reduce()</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Operaciones con reduce()</h1>
+    <div id="message" class="message"></div>
+ 
+    <div class="operacion-container">
+        <h2>1. Sumar elementos de un array</h2>
+        <div class="array-display">
+            <strong>Números a sumar:</strong>
+            <div class="array-items">
+                <% numerosSuma.forEach(num => { %>
+                    <span class="array-item"><%= num %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="sumarNumerosForm" class="reduce-form">
+            <button type="submit" class="btn-action">
+                Calcular suma total
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="suma-resultado" class="resultado-total"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>2. Multiplicar elementos de un array</h2>
+        <div class="array-display">
+            <strong>Números a multiplicar:</strong>
+            <div class="array-items">
+                <% numerosMultiplicacion.forEach(num => { %>
+                    <span class="array-item"><%= num %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="multiplicarNumerosForm" class="reduce-form">
+            <button type="submit" class="btn-action">
+                Calcular producto total
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="multiplicacion-resultado" class="resultado-total"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>3. Sumar precios de productos</h2>
+        <div class="array-display">
+            <strong>Productos:</strong>
+            <div class="array-items">
+                <% productos.forEach(producto => { %>
+                    <div class="array-item">
+                        <%= producto.nombre %>: $<%= producto.precio %>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+        <form id="sumarPreciosForm" class="reduce-form">
+            <button type="submit" class="btn-action">
+                Calcular total
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="precios-resultado" class="resultado-total"></div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

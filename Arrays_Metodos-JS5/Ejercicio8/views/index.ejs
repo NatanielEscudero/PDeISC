@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con includes()</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Operaciones con includes()</h1>
+    <div id="message" class="message"></div>
+ 
+    <div class="operacion-container">
+        <h2>1. Verificar usuario "admin"</h2>
+        <div class="array-display">
+            <strong>Usuarios:</strong>
+            <div class="array-items">
+                <% usuarios.forEach(user => { %>
+                    <span class="array-item"><%= user %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="verificarAdminForm" class="includes-form">
+            <button type="submit" class="btn-action">
+                Verificar si existe "admin"
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="admin-resultado" class="resultado-text"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>2. Verificar color "verde"</h2>
+        <div class="array-display">
+            <strong>Colores:</strong>
+            <div class="array-items">
+                <% colores.forEach(color => { %>
+                    <span class="array-item"><%= color %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="verificarVerdeForm" class="includes-form">
+            <button type="submit" class="btn-action">
+                Verificar si existe "verde"
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="verde-resultado" class="resultado-text"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>3. Agregar número (si no existe)</h2>
+        <div class="array-display">
+            <strong>Números actuales:</strong>
+            <div class="array-items">
+                <% numeros.forEach(num => { %>
+                    <span class="array-item"><%= num %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="agregarNumeroForm" class="includes-form">
+            <div class="form-group">
+                <input type="number" name="numero" placeholder="Ingrese un número" required>
+            </div>
+            <button type="submit" class="btn-action">
+                Verificar y agregar número
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="numero-resultado" class="resultado-text"></div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con shift()</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Operaciones con shift()</h1>
+    <div id="message" class="message"></div>
+
+    <form id="formNumeros" class="operacion-container">
+        <h2>Array de Números</h2>
+        <div class="array-container">
+            <% numeros.forEach(num => { %>
+                <span class="array-item"><%= num %></span>
+            <% }); %>
+        </div>
+        <button type="submit" class="btn-action">Eliminar Primer Número (shift())</button>
+    </form>
+
+    <form id="formChat" class="operacion-container">
+        <h2>Mensajes de Chat</h2>
+        <div class="array-container chat">
+            <% mensajesChat.forEach(msg => { %>
+                <div class="array-item"><%= msg %></div>
+            <% }); %>
+        </div>
+        <button type="submit" class="btn-action">Eliminar Primer Mensaje (shift())</button>
+    </form>
+
+    <form id="formAtencion" class="operacion-container">
+        <h2>Cola de Atención al Cliente</h2>
+        <div class="array-container cola">
+            <% colaAtencion.forEach(cliente => { %>
+                <div class="array-item"><%= cliente %></div>
+            <% }); %>
+        </div>
+        <button type="submit" class="btn-action">Atender Siguiente Cliente (shift())</button>
+    </form>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

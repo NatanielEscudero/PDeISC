@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con map()</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Operaciones con map()</h1>
+    <div id="message" class="message"></div>
+ 
+    <div class="operacion-container">
+        <h2>1. Multiplicar números por 3</h2>
+        <div class="array-display">
+            <strong>Números originales:</strong>
+            <div class="array-items">
+                <% numeros.forEach(num => { %>
+                    <span class="array-item"><%= num %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="multiplicarNumerosForm" class="map-form">
+            <button type="submit" class="btn-action">
+                Multiplicar por 3
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="numeros-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>2. Convertir nombres a mayúsculas</h2>
+        <div class="array-display">
+            <strong>Nombres originales:</strong>
+            <div class="array-items">
+                <% nombres.forEach(nombre => { %>
+                    <span class="array-item"><%= nombre %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="convertirMayusculasForm" class="map-form">
+            <button type="submit" class="btn-action">
+                Convertir a mayúsculas
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="nombres-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>3. Agregar IVA (21%) a precios</h2>
+        <div class="array-display">
+            <strong>Precios originales:</strong>
+            <div class="array-items">
+                <% precios.forEach(precio => { %>
+                    <span class="array-item">$<%= precio %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="agregarIvaForm" class="map-form">
+            <button type="submit" class="btn-action">
+                Agregar IVA
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="precios-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

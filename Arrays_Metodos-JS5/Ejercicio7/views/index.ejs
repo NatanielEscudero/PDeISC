@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con indexOf()</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Operaciones con indexOf()</h1>
+    <div id="message" class="message"></div>
+ 
+    <div class="operacion-container">
+        <h2>1. Buscar palabra "perro"</h2>
+        <div class="array-display">
+            <strong>Array de animales:</strong>
+            <div class="array-items">
+                <% animales.forEach((animal, index) => { %>
+                    <span class="array-item"><%= animal %> <small>(<%= index %>)</small></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="buscarPerroForm" class="indexof-form">
+            <button type="submit" class="btn-action">
+                Buscar "perro" en el array
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="perro-resultado" class="resultado-text"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>2. Buscar número 50</h2>
+        <div class="array-display">
+            <strong>Array de números:</strong>
+            <div class="array-items">
+                <% numeros.forEach((num, index) => { %>
+                    <span class="array-item"><%= num %> <small>(<%= index %>)</small></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="buscarNumeroForm" class="indexof-form">
+            <button type="submit" class="btn-action">
+                Buscar número 50 en el array
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="numero-resultado" class="resultado-text"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>3. Buscar "Madrid"</h2>
+        <div class="array-display">
+            <strong>Array de ciudades:</strong>
+            <div class="array-items">
+                <% ciudades.forEach((ciudad, index) => { %>
+                    <span class="array-item"><%= ciudad %> <small>(<%= index %>)</small></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="buscarMadridForm" class="indexof-form">
+            <button type="submit" class="btn-action">
+                Buscar "Madrid" en el array
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="madrid-resultado" class="resultado-text"></div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

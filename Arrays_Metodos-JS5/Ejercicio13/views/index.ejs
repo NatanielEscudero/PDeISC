@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con sort()</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Operaciones con sort()</h1>
+    <div id="message" class="message"></div>
+ 
+    <div class="operacion-container">
+        <h2>1. Ordenar números</h2>
+        <div class="array-display">
+            <strong>Números originales:</strong>
+            <div class="array-items">
+                <% numeros.forEach(num => { %>
+                    <span class="array-item"><%= num %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="ordenarNumerosForm" class="sort-form">
+            <button type="submit" class="btn-action">
+                Ordenar de menor a mayor
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="numeros-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>2. Ordenar palabras</h2>
+        <div class="array-display">
+            <strong>Palabras originales:</strong>
+            <div class="array-items">
+                <% palabras.forEach(palabra => { %>
+                    <span class="array-item"><%= palabra %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="ordenarPalabrasForm" class="sort-form">
+            <button type="submit" class="btn-action">
+                Ordenar alfabéticamente
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="palabras-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>3. Ordenar personas por edad</h2>
+        <div class="array-display">
+            <strong>Personas originales:</strong>
+            <div class="array-items">
+                <% personas.forEach(persona => { %>
+                    <div class="array-item">
+                        <%= persona.nombre %> (<%= persona.edad %> años)
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+        <form id="ordenarPersonasForm" class="sort-form">
+            <button type="submit" class="btn-action">
+                Ordenar por edad
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="personas-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

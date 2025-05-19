@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decodificador de Mensajes Secretos</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SECRETO.EXE</h1>
+        <p class="subtitle">Decodificador de mensajes secretos</p>
+        
+        <div class="message-box">
+            <form id="decodificarForm">
+                <div class="form-group">
+                    <label for="mensaje">Mensaje codificado:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" placeholder="Ingrese el mensaje codificado (ej: hola(odnum))" required></textarea>
+                </div>
+                <button type="submit" class="btn-decodificar">Decodificar Mensaje</button>
+            </form>
+        </div>
+        
+        <div id="resultado" class="resultado-container">
+            <div class="resultado-header">
+                <h2>Resultado:</h2>
+            </div>
+            <div id="mensajeDecodificado" class="mensaje-decodificado"> 
+            </div>
+        </div>
+        
+        <div class="instrucciones">
+            <h3>Instrucciones:</h3>
+            <p>Las partes del mensaje entre paréntesis han sido invertidas para codificarlo.</p>
+            <p>Ejemplo: "hoy(odnum)" se decodifica como "hoy mundo"</p>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

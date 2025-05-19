@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con reverse()</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Operaciones con reverse()</h1>
+    <div id="message" class="message"></div>
+ 
+    <div class="operacion-container">
+        <h2>1. Invertir array de letras</h2>
+        <div class="array-display">
+            <strong>Letras originales:</strong>
+            <div class="array-items">
+                <% letras.forEach(letra => { %>
+                    <span class="array-item"><%= letra %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="invertirLetrasForm" class="reverse-form">
+            <button type="submit" class="btn-action">
+                Invertir orden
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="letras-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>2. Invertir array de números</h2>
+        <div class="array-display">
+            <strong>Números originales:</strong>
+            <div class="array-items">
+                <% numeros.forEach(num => { %>
+                    <span class="array-item"><%= num %></span>
+                <% }); %>
+            </div>
+        </div>
+        <form id="invertirNumerosForm" class="reverse-form">
+            <button type="submit" class="btn-action">
+                Invertir orden
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="numeros-resultado" class="resultado-lista"></div>
+        </div>
+    </div>
+ 
+    <div class="operacion-container">
+        <h2>3. Invertir texto</h2>
+        <div class="array-display">
+            <strong>Texto original:</strong>
+            <div class="texto-original">
+                <%= texto %>
+            </div>
+        </div>
+        <form id="invertirTextoForm" class="reverse-form">
+            <button type="submit" class="btn-action">
+                Invertir texto
+            </button>
+        </form>
+        <div class="resultado-container">
+            <div id="texto-resultado" class="resultado-texto"></div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

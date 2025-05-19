@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Dinámico</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h2>Formulario Dinámico</h2>
+    
+    <form id="dataForm">
+        <div class="section">
+            <h3>Amigos</h3>
+            <div id="amigos-container">
+                <div class="input-group">
+                    <input type="text" name="amigo" placeholder="Nombre del amigo">
+                    <button type="button" class="btn-remove" onclick="removeField(this)">Eliminar</button>
+                </div>
+            </div>
+            <button type="button" class="btn-add" onclick="addField('amigo')">+ Agregar Amigo</button>
+        </div>
+        
+        <div class="section">
+            <h3>Frutas</h3>
+            <div id="frutas-container">
+                <div class="input-group">
+                    <input type="text" name="fruta" placeholder="Nombre de la fruta">
+                    <button type="button" class="btn-remove" onclick="removeField(this)">Eliminar</button>
+                </div>
+            </div>
+            <button type="button" class="btn-add" onclick="addField('fruta')">+ Agregar Fruta</button>
+        </div>
+        
+        <div class="section">
+            <h3>Números</h3>
+            <div id="numeros-container">
+                <div class="input-group">
+                    <input type="number" name="numero" placeholder="Número">
+                    <button type="button" class="btn-remove" onclick="removeField(this)">Eliminar</button>
+                </div>
+            </div>
+            <button type="button" class="btn-add" onclick="addField('numero')">+ Agregar Número</button>
+        </div>
+        
+        <button type="submit" class="btn-submit">Guardar Todo</button>
+    </form>
+    
+    <div id="message" class="message"></div>
+    
+    <h2>Datos Registrados</h2>
+    <div class="tables-container">
+        <div class="table-wrapper">
+            <h3>Amigos</h3>
+            <table id="amigosTable">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (personas && personas.length > 0) { %>
+                        <% personas.forEach(persona => { %>
+                            <tr>
+                                <td><%= persona %></td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td>No hay amigos registrados</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="table-wrapper">
+            <h3>Frutas</h3>
+            <table id="frutasTable">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (frutas && frutas.length > 0) { %>
+                        <% frutas.forEach(fruta => { %>
+                            <tr>
+                                <td><%= fruta %></td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td>No hay frutas registradas</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="table-wrapper">
+            <h3>Números</h3>
+            <table id="numerosTable">
+                <thead>
+                    <tr>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (numeros && numeros.length > 0) { %>
+                        <% numeros.forEach(numero => { %>
+                            <tr>
+                                <td><%= numero %></td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td>No hay números registrados</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

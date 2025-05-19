@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones con unshift()</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h2>Operaciones con unshift() usando AJAX</h2>
+    
+    <div id="message" class="message"></div>
+ 
+    <form id="formColores" class="form-container">
+        <h3>Agregar colores</h3>
+        <button type="submit" class="btn-add">Agregar 3 colores (rojo, verde, azul)</button>
+        <div id="coloresList" class="data-container">
+            <% if (colores && colores.length > 0) { %>
+                <% colores.forEach(color => { %>
+                    <div><%= color %></div>
+                <% }); %>
+            <% } else { %>
+                <div>No hay colores agregados</div>
+            <% } %>
+        </div>
+    </form>
+ 
+    <form id="formTareas" class="form-container">
+        <h3>Agregar tarea urgente</h3>
+        <input type="text" name="tarea" placeholder="Ingrese tarea urgente" required>
+        <button type="submit" class="btn-add">Agregar Tarea Urgente</button>
+        <div id="tareasList" class="data-container">
+            <% if (tareas && tareas.length > 0) { %>
+                <% tareas.forEach(tarea => { %>
+                    <div><%= tarea %></div>
+                <% }); %>
+            <% } else { %>
+                <div>No hay tareas urgentes</div>
+            <% } %>
+        </div>
+    </form>
+ 
+    <form id="formUsuarios" class="form-container">
+        <h3>Agregar usuario</h3>
+        <input type="text" name="usuario" placeholder="Nombre de usuario" required>
+        <button type="submit" class="btn-add">Agregar Usuario</button>
+        <div id="usuariosList" class="data-container">
+            <% if (usuariosConectados && usuariosConectados.length > 0) { %>
+                <% usuariosConectados.forEach(usuario => { %>
+                    <div><%= usuario %></div>
+                <% }); %>
+            <% } else { %>
+                <div>No hay usuarios conectados</div>
+            <% } %>
+        </div>
+    </form>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
