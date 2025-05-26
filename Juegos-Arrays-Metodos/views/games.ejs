@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juegos</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+  <h1>Juegos</h1>
+  <div class="players-info">
+    <span>Jugador 1: <%= player1 %></span>
+    <span>Jugador 2: <%= player2 %></span>
+  </div>
+  <div class="header-actions">
+    <button id="logout-btn" class="logout-btn">Volver al Login</button>
+  </div>
+</header>
+  
+  <main>
+    <div class="game-selector">
+      <button class="game-btn active" data-game="simon">Simón Dice</button>
+      <button class="game-btn" data-game="tictactoe">TaTeTi</button>
+      <button class="game-btn" data-game="rps">Piedra Papel Tijeras</button>
+    </div>
+    
+    <div class="game-container">
+      <div id="simon-game" class="game-content active">
+        <h2>Simón Dice</h2>
+        <div class="simon-container">
+          <div class="simon-btn green" data-color="green"></div>
+          <div class="simon-btn red" data-color="red"></div>
+          <div class="simon-btn yellow" data-color="yellow"></div>
+          <div class="simon-btn blue" data-color="blue"></div>
+        </div>
+        <div class="game-controls">
+          <button id="start-simon">Comenzar</button>
+          <div class="score">Nivel: <span id="simon-level">0</span></div>
+        </div>
+      </div>
+       
+      <div id="tictactoe-game" class="game-content">
+        <h2>TaTeTi</h2>
+        <div class="game-mode">
+          <label>
+            <input type="checkbox" id="tictactoe-computer"> Jugar contra computadora
+          </label>
+        </div>
+        <div class="tictactoe-board">
+          <% for (let i = 0; i < 9; i++) { %>
+            <div class="tictactoe-cell" data-index="<%= i %>"></div>
+          <% } %>
+        </div>
+        <div class="game-info">
+          <p>Turno: <span id="tictactoe-turn">X</span></p>
+          <button id="reset-tictactoe">Reiniciar</button>
+        </div>
+      </div>
+       
+<div id="rps-game" class="game-content">
+  <h2>Piedra Papel Tijeras</h2>
+  <div class="game-mode">
+    <label>
+      <input type="checkbox" id="rps-computer"> Jugar contra computadora
+    </label>
+  </div>
+  
+  <div class="rps-options player1-options">
+    <h3><%= player1 %></h3>
+    <button class="rps-btn" data-choice="piedra">Piedra</button>
+    <button class="rps-btn" data-choice="papel">Papel</button>
+    <button class="rps-btn" data-choice="tijeras">Tijeras</button>
+  </div>
+  
+  <% if (player2 !== 'Computadora') { %>
+    <div class="rps-options player2-options hidden">
+      <h3><%= player2 %></h3>
+      <button class="rps-btn" data-choice="piedra">Piedra</button>
+      <button class="rps-btn" data-choice="papel">Papel</button>
+      <button class="rps-btn" data-choice="tijeras">Tijeras</button>
+    </div>
+  <% } %>
+  
+  <div class="rps-result">
+    <div id="rps-player1-choice"></div>
+    <div id="rps-opponent-choice" class="hidden"></div>
+    <div id="rps-result-text"></div>
+  </div>
+  <button id="reset-rps" class="hidden">Jugar otra vez</button>
+    </div>
+  </main>
+  
+<script src="/js/main.js"></script>
+<script src="/js/simon.js"></script>
+<script src="/js/tictactoe.js"></script>
+<script src="/js/rps.js"></script>
+<script src="/js/logout.js"></script>
+
+</body>
+</html>
