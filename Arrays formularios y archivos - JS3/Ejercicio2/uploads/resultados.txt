@@ -1,0 +1,8 @@
+
+RESULTADOS DEL ANÁLISIS
+
+Números válidos (5): 1, 44, 77, 121, 232
+Porcentajes:
+50
+
+Números no válidos (5): 123, 56, 12, 562, 457

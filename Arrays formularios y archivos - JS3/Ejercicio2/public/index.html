@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Subir archivo de números</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sube tu archivo .txt</h1>
+        <form action="/procesar" method="POST" enctype="multipart/form-data">
+            <label for="archivo" class="file-label">📁 Seleccionar archivo .txt</label>
+            <input type="file" name="archivo" id="archivo" accept=".txt" required>
+            
+            <button type="submit">Procesar archivo</button>
+            <div id="mensaje" class="oculto">Archivo cargado con éxito ✅</div>
+        </form>
+    </div>
+    <script src="js/script.js"></script>
+
+</body>
+</html>
