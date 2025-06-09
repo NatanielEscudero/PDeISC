@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 
@@ -14,6 +15,10 @@ app.use(session({
   secret: 'secret-key',
   resave: false,
   saveUninitialized: true
+}));
+app.use(cors({
+  origin: ['http://localhost:8100'], // Puerto de Ionic en desarrollo
+  credentials: true
 }));
 
 // Rutas
@@ -63,6 +68,26 @@ app.post('/api/play', (req, res) => {
   }
   
   res.json(result);
+});
+
+app.get('/api/games', (req, res) => {
+  if (!req.session.player1) {
+    return res.status(401).json({ error: 'No autenticado' });
+  }
+  res.json({
+    player1: req.session.player1,
+    player2: req.session.player2
+  });
+});
+
+app.post('/api/login', (req, res) => {
+  req.session.player1 = req.body.player1;
+  req.session.player2 = req.body.player2 || 'Computadora';
+  res.json({
+    success: true,
+    player1: req.session.player1,
+    player2: req.session.player2
+  });
 });
 
 // Lógica de los juegos
