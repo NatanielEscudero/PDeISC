@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingresar Animales</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h1>Complete los 5 campos</h1>
+    <form action="/login" method="POST">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="jaula">Jaula de estadia (entre 1 y 5):</label>
+        <input type="text" id="jaula" name="jaula" required>
+      </div>
+      <div class="form-group">
+        <label for="tipo">Tipo de animal:</label>
+        <input type="text" id="tipo" name="tipo" required>
+      </div>
+      <div class="form-group">
+        <label for="peso">peso (kg):</label>
+        <input type="number" id="peso" name="peso" required>
+      </div>
+      <button type="submit">agregar animal</button>
+    </form>
+
+    
+  </div>
+</body>
+</html>
