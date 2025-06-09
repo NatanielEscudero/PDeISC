@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>TaTeTi</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/games"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label>Jugar contra computadora</ion-label>
+    <ion-toggle [(ngModel)]="againstComputer" (ionChange)="resetGame()"></ion-toggle>
+  </ion-item>
+
+  <div class="turn-display">
+    Turno: {{currentPlayer === 'X' ? players.player1 : againstComputer ? 'Computadora' : players.player2}} ({{currentPlayer}})
+  </div>
+
+  <div class="tictactoe-board">
+    <ion-button *ngFor="let cell of board; let i = index" 
+                (click)="makeMove(i)"
+                [disabled]="cell !== '' || gameOver || (againstComputer && currentPlayer === 'O')">
+      {{cell}}
+    </ion-button>
+  </div>
+
+  <ion-button expand="block" (click)="resetGame()">Reiniciar</ion-button>
+</ion-content>

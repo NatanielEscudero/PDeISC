@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="login()">
+    <ion-item>
+      <ion-label position="floating">Jugador 1</ion-label>
+      <ion-input type="text" [(ngModel)]="credentials.player1" name="player1" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Jugador 2 (opcional)</ion-label>
+      <ion-input type="text" [(ngModel)]="credentials.player2" name="player2"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" class="ion-margin-top">Comenzar a jugar</ion-button>
+  </form>
+</ion-content>

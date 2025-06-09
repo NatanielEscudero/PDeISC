@@ -1,0 +1,19 @@
+.tictactoe-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  margin: 20px 0;
+}
+
+.tictactoe-board ion-button {
+  height: 80px;
+  --border-radius: 0;
+  font-size: 24px;
+  margin: 0;
+}
+
+.turn-display {
+  text-align: center;
+  font-size: 18px;
+  margin: 10px 0;
+}
