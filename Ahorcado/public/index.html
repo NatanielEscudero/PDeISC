@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ahorcado</title>
+<link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+<div class="logo">
+    <h1>El Ahorcado</h1>
+    <h2 id="subtitulo">¡Adivina la palabra!</h2>
+</div>
+<div id="juegito">
+    
+    <h2>Intentos errados:<span id="intentosHechos"></span></h2>
+    <img id="ahorcado" src="src/img/hombre.png" alt="Ahorcado">
+    <div id="juego"></div>
+    
+    <h2>Intentos del jugador</h2>
+    <div id="intentos"></div>
+</div>
+
+<div id="perderJuego" style="display:none;">
+<h2>Intentos errados: Deficit de atencion</h2>
+    <img src="src/img/perder.png">
+    <h2>¡Perdiste!</h2>
+    <button class="reset" id="reset">Reiniciar juego</button> 
+</div>
+
+<div id="ganaste" style="display:none;">
+    <h2>¡Ganaste!</h2>
+    <video 
+  id="Video" 
+  src="src/video/video.mp4" 
+  autoplay 
+  loop
+  muted
+  style="width: 400px; height: auto;" ></video>
+    <p>Tus puntos: <span id="puntosDiv"></span></p>
+    <div id="posiciones"></div>
+    <button class="reset" id="reset">Reiniciar juego</button>  
+    <input id="nombre" type="text" id="nombre" placeholder="Tu nombre">
+    <button id="guardar">Guardar score</button>
+    <button id="pdf">Descargar PDF</button>
+</div>  
+
+<script src="/src/js/main.js"></script>
+</body>
+</html>

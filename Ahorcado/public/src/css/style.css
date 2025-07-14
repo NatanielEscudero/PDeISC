@@ -1,0 +1,226 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #badcff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-image: url('../img/fondo2.jpg');
+    background-size: cover;
+}
+
+.logo {
+    background-image: url('../img/fondo.jpg');
+    background-repeat: repeat-x;
+    background-position: top center;
+    width: 100%;
+    height: 200px;
+}
+
+h1 {
+    color: #5d6772;
+    margin-top: 20px;
+    font-size: 4.5em;
+}
+
+h2 {
+    color: #34495e;
+}
+
+#juegito,
+#ganaste,
+#perderJuego {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+#juego {
+    font-size: 2em;
+    letter-spacing: 10px;
+    margin: 20px 0;
+}
+
+#intentos {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #c0392b;
+}
+
+#ahorcado {
+    max-width: 200px;
+    margin: 20px 0;
+}
+
+#ganaste video {
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    max-width: 100%;
+    height: auto;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+input[type="text"] {
+    padding: 8px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    max-width: 90%;
+}
+
+#posiciones ul {
+    list-style: none;
+    padding: 0;
+}
+
+#posiciones li {
+    background: #ecf0f1;
+    margin: 5px;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+#perderJuego img {
+    max-width: 200px;
+    margin: 20px 0;
+    width: 100%;
+    height: auto;
+}
+
+#subtitulo {
+    font-family: 'MiFuente', sans-serif;
+    color: #c7bc25;
+    transform: rotate(-15deg);
+    display: inline-block;
+    margin-top: -30vh;
+    margin-left: 20vw;
+    animation: respirar 2s infinite ease-in-out;
+}
+
+@font-face {
+    font-family: 'MiFuente';
+    src: url('../fonts/minecraft_font.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@keyframes respirar {
+    0% {
+        transform: rotate(-15deg) scale(1);
+    }
+    50% {
+        transform: rotate(-15deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(-15deg) scale(1);
+    }
+}
+
+/* Media Queries para Responsive */
+
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 3.5em;
+    }
+
+    #juegito,
+    #ganaste,
+    #perderJuego {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    #juego {
+        font-size: 1.8em;
+        letter-spacing: 7px;
+    }
+
+    #ahorcado {
+        max-width: 150px;
+    }
+
+    #subtitulo {
+        margin-top: -20vh;
+        margin-left: 10vw;
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.8em;
+    }
+
+    #juego {
+        font-size: 1.5em;
+        letter-spacing: 5px;
+    }
+
+    #intentos {
+        font-size: 1em;
+    }
+
+    #ahorcado {
+        max-width: 120px;
+    }
+
+    input[type="text"] {
+        width: 90%;
+        max-width: none;
+    }
+
+    #subtitulo {
+        margin-top: -15vh;
+        margin-left: 5vw;
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    #juego {
+        font-size: 1.2em;
+        letter-spacing: 3px;
+    }
+
+    #intentos {
+        font-size: 0.9em;
+    }
+
+    #ahorcado {
+        max-width: 100px;
+    }
+
+    button {
+        padding: 8px 12px;
+        margin: 5px;
+        font-size: 0.9em;
+    }
+
+    #subtitulo {
+        margin-top: -10vh;
+        margin-left: 2vw;
+        font-size: 1em;
+    }
+}
