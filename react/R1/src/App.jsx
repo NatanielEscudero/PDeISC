@@ -5,7 +5,7 @@ function Holamundo() {
       <h1>
         Hola mundo
       </h1>
-    );
+    );  // Retorna el componente de holamundo
 }
 
 function Presentacion({user}){
@@ -28,62 +28,110 @@ function Presentacion({user}){
         </div>
 
      </div>   
-    );
+    );     // Retorna el componente de presentacion
 
 }
 
 function Contador(){
 
-  const [contador, setContador] = useState(0);
+  const [contador, setContador] = useState(0);  // Inicializa el contador en 0
 
-  function contadorMas() {
+  function contadorMas() {  // Incrementa el contador
     setContador(prev => prev + 1);
   }
 
-  function contadorMenos() {
+  function contadorMenos() { // Decrementa el contador
     setContador(prev => prev - 1);
   }
 
-  function contadorReset() {
+  function contadorReset() {  // Resetea el contador a 0
     setContador(0);
   }
 
-  return(
-     <div>
+  return(               
+     <div className="contador">
         <h1>{contador}</h1>
-        <button onClick={contadorMas}>+</button>
-        <button onClick={contadorMenos}>-</button>
-        <button onClick={contadorReset}>reset</button>
+        <div>
+          <button onClick={contadorMas}>+</button>
+          <button onClick={contadorMenos}>-</button>
+          <button onClick={contadorReset}>reset</button>
+        </div>
      </div>   
-    );
+    );    // Retorna el componente del contador
 
 }
 
-function Tareas(){
-
+function Tareas() {
   const [tareas, setTareas] = useState([
-    {texto: "comprar papota",completada: false},
-    {texto: "comprar papota",completada: false},
-    {texto: "comprar papota",completada: false},
-  ]);
+    { texto: "comprar papota", completada: false },
+    { texto: "ordenar la ropa", completada: false },
+    { texto: "arreglar el auto", completada: false },
+  ]); // Estado inicial con algunas tareas
 
   const toggleCompletar = (index) => {
-    
-  }
-  return(
-     <div>
-        <h1>{contador}</h1>
-        <button onClick={contadorMas}>+</button>
-        <button onClick={contadorMenos}>-</button>
-        <button onClick={contadorReset}>reset</button>
-     </div>   
+    setTareas(prevTareas =>
+      prevTareas.map((tarea, i) =>
+        i === index ? { ...tarea, completada: !tarea.completada } : tarea
+      )
     );
+  };    // Función para alternar el estado de completado de una tarea
 
+  return (
+    <div>
+      <h2>Lista de tareas</h2>
+      <ul>
+        {tareas.map((tarea, index) => (
+          <li
+            key={index}
+            style={{
+              textDecoration: tarea.completada ? "line-through" : "none"
+            }}
+          >
+            {tarea.texto}
+            <button onClick={() => toggleCompletar(index)}>
+              {tarea.completada ? "Desmarcar" : "Completar"}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );  // Retorna el componente de tareas
 }
+
+function Formulario() {
+  const [nombre, setNombre] = useState("");
+  const [mensaje, setMensaje] = useState("");
+
+  const manejarEnvio = (e) => {
+    e.preventDefault(); // Evita que se recargue la página
+    if (nombre.trim() !== "") {
+      setMensaje(`¡Bienvenido, ${nombre}!`);
+    } else {
+      setMensaje("Por favor ingresa tu nombre");
+    }
+  };
+
+  return (
+    <div>
+      <h2>Formulario simple</h2>
+      <form onSubmit={manejarEnvio}>
+        <input
+          type="text"
+          placeholder="Ingresa tu nombre"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+        />
+        <button type="submit">Enviar</button>
+      </form>
+      {mensaje && <p>{mensaje}</p>}
+    </div>
+  );  // Retorna el componente del formulario
+}
+
 export default function MyApp() {
   return (
     <div>
-      <h1>Bienvenido a mi aplicación</h1>
+      <h1>React 1</h1>
       <Holamundo />
       <Contador />
       <Presentacion user = {{
@@ -93,6 +141,8 @@ export default function MyApp() {
       imageSize: 90,
       job: 'Ingeniero Electromecanico',
       }} />
+      <Tareas/>
+      <Formulario/>
     </div>
   );
 }
