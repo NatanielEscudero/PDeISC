@@ -31,3 +31,8 @@ export async function updateUser(id, data) {
 export async function deleteUser(id) {
   await fetch(`${API_URL}/${id}`, { method: "DELETE" });
 } // eliminar un usuario
+
+export async function searchUsers(query) {
+  const res = await fetch(`http://localhost:3000/usuarios/buscar/${encodeURIComponent(query)}`);
+  return res.json();
+}

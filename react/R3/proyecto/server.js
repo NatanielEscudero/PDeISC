@@ -24,7 +24,9 @@ app.get('/usuarios/:id', async (req, res) => {
     const db = await connectToDatabase();
     const [rows] = await db.execute('SELECT * FROM usr WHERE id = ?', [req.params.id]);
     await db.end();
-    if (rows.length === 0) return res.status(404).json({ error: 'Usuario no encontrado' });
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
     res.json(rows[0]);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener usuario' });
@@ -63,6 +65,8 @@ app.put('/usuarios/:id', async (req, res) => {
   }
 });
 
+
+
 // Eliminar usuario
 app.delete('/usuarios/:id', async (req, res) => {
   try {
@@ -72,6 +76,25 @@ app.delete('/usuarios/:id', async (req, res) => {
     res.json({ message: 'Usuario eliminado' });
   } catch (error) {
     res.status(500).json({ error: 'Error al eliminar usuario' });
+  }
+});
+
+// Buscar usuarios por nombre, apellido o email
+app.get('/usuarios/buscar/:q', async (req, res) => {
+  const q = `%${req.params.q}%`;
+  try {
+    const db = await connectToDatabase();
+    const [rows] = await db.execute(
+      `SELECT * FROM usr WHERE 
+        Nombre LIKE ? OR 
+        Apellido LIKE ? OR 
+        Email LIKE ?`,
+      [q, q, q]
+    );
+    await db.end();
+    res.json(rows);
+  } catch (error) {
+    res.status(500).json({ error: 'Error en la búsqueda' });
   }
 });
 

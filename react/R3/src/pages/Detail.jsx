@@ -4,11 +4,22 @@ import { getUser } from "../api/users";
 export default function Detail() {
   const id = window.location.pathname.split("/").pop();
   const [user, setUser] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    getUser(id).then(setUser);
-  }, [id]);
+  getUser(id)
+    .then(data => {
+      console.log("Respuesta del backend:", data);
+      if (data && !data.error) {
+        setUser(data);
+      } else {
+        setError("Usuario no encontrado");
+      }
+    })
+    .catch(() => setError("Error al cargar usuario"));
+}, [id]);
 
+  if (error) return <div>{error}</div>;
   if (!user) return <div>Cargando...</div>;
 
   return (
