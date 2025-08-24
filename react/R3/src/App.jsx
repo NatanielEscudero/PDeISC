@@ -41,7 +41,6 @@ function App() {
             }
           />
           <Route path="/form" element={<Form addTask={addTask} />} />
-          <Route path="/detail" element={<Detail task={selectedTask} />} />
         </Routes>
       </div>
     </Router>
