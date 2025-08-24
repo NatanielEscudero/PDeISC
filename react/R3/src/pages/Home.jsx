@@ -87,7 +87,6 @@ export default function Home() {
               <td data-label="Fecha de nacimiento">{user["Fecha de nacimiento"]}</td>
               <td data-label="Email">{user.Email}</td>
               <td>
-                <a href={`/detail/${user.id}`}>Ver</a>{" | "}
                 <a href={`/form?id=${user.id}`}>Editar</a>{" | "}
                 <button onClick={() => handleDeleteClick(user)}>Eliminar</button>
               </td>
@@ -121,4 +120,5 @@ export default function Home() {
       )}
     </div>
   );
+
 }
