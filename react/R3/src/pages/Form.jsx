@@ -143,15 +143,12 @@ export default function Form() {
     try {
       if (id) {
         await updateUser(id, form);
-        alert("Usuario actualizado exitosamente");
       } else {
         await createUser(form);
-        alert("Usuario creado exitosamente");
       }
       navigate("/");
     } catch (error) {
       console.error("Error al guardar usuario:", error);
-      alert("Error al guardar el usuario. Por favor, intenta nuevamente.");
     } finally {
       setIsSubmitting(false);
     }
