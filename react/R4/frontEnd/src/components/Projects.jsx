@@ -6,7 +6,7 @@ export default function Projects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/projects") // URL de tu backend
+    axios.get("https://p-de-isc-back.vercel.app/api/projects") // URL de tu backend
       .then(res => setProjects(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -40,4 +40,5 @@ export default function Projects() {
     </section>
   );
 }
+
 
