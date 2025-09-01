@@ -7,7 +7,7 @@ export default function DesktopAdmin({ onClose }) {
   const [editId, setEditId] = useState(null);
 
   const fetchProjects = () => {
-    axios.get("https://p-de-isc-back.vercel.app//api/projects")
+    axios.get("https://p-de-isc-back.vercel.app/api/projects")
       .then(res => setProjects(res.data))
       .catch(err => console.error(err));
   };
@@ -15,7 +15,7 @@ export default function DesktopAdmin({ onClose }) {
   useEffect(() => { fetchProjects(); }, []);
 
   const handleAdd = () => {
-    axios.post("http://localhost:5000/api/projects", newProject)
+    axios.post("https://p-de-isc-back.vercel.app/api/projects", newProject)
       .then(() => { 
         fetchProjects(); 
         setNewProject({ title: "", description: "", link: "", image: "" }); 
@@ -24,7 +24,7 @@ export default function DesktopAdmin({ onClose }) {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/projects/${id}`)
+    axios.delete(`https://p-de-isc-back.vercel.app/api/projects/${id}`)
       .then(() => fetchProjects())
       .catch(err => console.error(err));
   };
@@ -35,7 +35,7 @@ export default function DesktopAdmin({ onClose }) {
   };
 
   const handleUpdate = () => {
-    axios.put(`http://localhost:5000/api/projects/${editId}`, newProject)
+    axios.put(`https://p-de-isc-back.vercel.app/api/projects/${editId}`, newProject)
       .then(() => { 
         fetchProjects(); 
         setEditId(null); 
@@ -70,4 +70,5 @@ export default function DesktopAdmin({ onClose }) {
       </div>
   );
 }
+
 
