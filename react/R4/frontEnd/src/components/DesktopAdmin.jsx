@@ -7,7 +7,7 @@ export default function DesktopAdmin({ onClose }) {
   const [editId, setEditId] = useState(null);
 
   const fetchProjects = () => {
-    axios.get("http://localhost:5000/api/projects")
+    axios.get("https://p-de-isc-back.vercel.app//api/projects")
       .then(res => setProjects(res.data))
       .catch(err => console.error(err));
   };
@@ -70,3 +70,4 @@ export default function DesktopAdmin({ onClose }) {
       </div>
   );
 }
+
