@@ -9,7 +9,7 @@ export default function Hero() {
         transition={{ duration: 1 }}
         className="text-5xl font-bold"
       >
-        ¡Hola, soy Juan!
+        ¡Hola, soy Nataniel!
       </motion.h1>
       <motion.p 
         initial={{ opacity: 0 }} 
