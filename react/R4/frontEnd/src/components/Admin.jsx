@@ -15,7 +15,7 @@ export default function Admin() {
   useEffect(() => { fetchProjects(); }, []);
 
   const handleAdd = () => {
-    axios.post("http://localhost:5000/api/projects", newProject)
+    axios.post("https://p-de-isc-back.vercel.app/api/projects", newProject)
       .then(() => { 
         fetchProjects(); 
         setNewProject({ title: "", description: "", link: "", image: "" }); 
@@ -24,7 +24,7 @@ export default function Admin() {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/projects/${id}`)
+    axios.delete(`https://p-de-isc-back.vercel.app/api/projects/${id}`)
       .then(() => fetchProjects())
       .catch(err => console.error(err));
   };
@@ -35,7 +35,7 @@ export default function Admin() {
   };
 
   const handleUpdate = () => {
-    axios.put(`http://localhost:5000/api/projects/${editId}`, newProject)
+    axios.put(`https://p-de-isc-back.vercel.app/api/projects/${editId}`, newProject)
       .then(() => { 
         fetchProjects(); 
         setEditId(null); 
@@ -79,4 +79,5 @@ export default function Admin() {
     </div>
   );
 }
+
 
