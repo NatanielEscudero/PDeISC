@@ -7,7 +7,7 @@ export default function Admin() {
   const [editId, setEditId] = useState(null); // id del proyecto en edición
 
   const fetchProjects = () => {
-    axios.get("http://localhost:5000/api/projects")
+    axios.get("https://p-de-isc-back.vercel.app/api/projects")
       .then(res => setProjects(res.data))
       .catch(err => console.error(err));
   };
@@ -79,3 +79,4 @@ export default function Admin() {
     </div>
   );
 }
+
