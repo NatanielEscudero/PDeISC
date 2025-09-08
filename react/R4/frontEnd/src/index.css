@@ -266,63 +266,6 @@ body, html {
 }
 
 /* Ajustes generales de ventana para pantallas pequeñas */
-@media (max-width: 768px) {
-  .window {
-    width: 90%;           /* ventanas ocupan casi todo el ancho */
-    min-height: 200px;
-    max-height: calc(100vh - 60px);
-    left: 5% !important;  /* centrado horizontal */
-    top: 20px !important;
-  }
-
-  .desktop-icons {
-    grid-template-columns: repeat(auto-fill, 60px);
-    grid-auto-rows: 80px;
-    gap: 0.5rem;
-    top: 0.5rem;
-    left: 0.5rem;
-  }
-
-  .desktop-icon {
-    width: 60px;
-    font-size: 12px;
-  }
-
-  .icon-image {
-    width: 40px;
-    height: 40px;
-  }
-
-  .icon-image img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .taskbar {
-    height: 50px;
-    padding: 0 5px;
-  }
-
-  .start-button {
-    font-size: 12px;
-    img {
-      width: 30px;
-      height: 30px;
-      margin-right: 3px;
-    }
-  }
-
-  .window-content-inner {
-    padding: 0.8rem;
-  }
-
-  .contact-form {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-/* Ajustes para móviles muy pequeños */
 @media (max-width: 480px) {
   .window {
     width: 95%;
@@ -331,52 +274,13 @@ body, html {
   }
 
   .desktop-icons {
-    grid-template-columns: repeat(auto-fill, 50px);
-    grid-auto-rows: 70px;
+    display: grid;
+    grid-auto-flow: column;   /* apila verticalmente y luego crea nuevas columnas */
+    grid-auto-columns: 50px;  /* ancho de cada columna */
+    grid-auto-rows: 70px;     /* altura de cada fila */
     gap: 0.3rem;
-  }
-
-  .desktop-icon {
-    width: 50px;
-    font-size: 10px;
-  }
-
-  .icon-image {
-    width: 35px;
-    height: 35px;
-  }
-
-  .icon-image img {
-    width: 35px;
-    height: 35px;
-  }
-
-  .start-button {
-    font-size: 10px;
-  }
-
-  .taskbar {
-    height: 40px;
-  }
-
-  .contact-form input,
-  .contact-form textarea,
-  .contact-form button {
-    font-size: 14px;
-  }
-}
-
-@media (max-heigth: 900px) {
-  .window {
-    width: 95%;
-    left: 2.5% !important;
-    top: 10px !important;
-  }
-
-  .desktop-icons {
-    grid-template-columns: repeat(auto-fill, 50px);
-    grid-auto-rows: 70px;
-    gap: 0.3rem;
+    max-height: 70vh;         /* límite vertical para que se cree scroll si se llena */
+    overflow-y: auto;         /* scroll vertical si hay más íconos de los que caben */
   }
 
   .desktop-icon {
