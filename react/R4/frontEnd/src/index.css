@@ -365,3 +365,46 @@ body, html {
     font-size: 14px;
   }
 }
+
+@media (max-heigth: 900px) {
+  .window {
+    width: 95%;
+    left: 2.5% !important;
+    top: 10px !important;
+  }
+
+  .desktop-icons {
+    grid-template-columns: repeat(auto-fill, 50px);
+    grid-auto-rows: 70px;
+    gap: 0.3rem;
+  }
+
+  .desktop-icon {
+    width: 50px;
+    font-size: 10px;
+  }
+
+  .icon-image {
+    width: 35px;
+    height: 35px;
+  }
+
+  .icon-image img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .start-button {
+    font-size: 10px;
+  }
+
+  .taskbar {
+    height: 40px;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form button {
+    font-size: 14px;
+  }
+}
