@@ -16,7 +16,8 @@ body, html {
   position: relative;
   width: 100%;
   height: calc(100vh - 45px); /* deja espacio para la taskbar */
-  overflow: hidden
+  overflow: hidden;
+  display: flex;
 }
 
 .window {
@@ -32,7 +33,6 @@ body, html {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 
 /* Contenido de la ventana */
@@ -165,7 +165,7 @@ body, html {
 }
 
 .desktop-icons {
-  position: absolute;
+  position: relative;
   top: 1rem;
   left: 1rem;
   display: grid;
