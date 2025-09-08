@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// Usa la URL de tu backend en Vercel directamente
+const API_BASE_URL = 'https://p-de-isc-back.vercel.app/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
