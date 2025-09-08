@@ -345,3 +345,50 @@ body, html {
     font-size: 14px;
   }
 }
+@media (max-width: 320px) {
+  .desktop-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); /* se ajustan automáticamente */
+    grid-auto-rows: 55px;     /* filas más compactas */
+    gap: 0.25rem;
+    max-height: none;         /* sin límite de altura */
+    overflow: hidden;         /* sin scroll extra */
+  }
+
+  .desktop-icon {
+    width: 40px;
+    font-size: 9px;           /* texto más chico */
+  }
+
+  .icon-image {
+    width: 30px;
+    height: 30px;
+  }
+
+  .icon-image img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .window {
+    width: 96%;               /* ventanas casi a pantalla completa */
+    left: 2% !important;
+    top: 5px !important;
+    min-height: 150px;        /* altura mínima reducida */
+  }
+
+  .taskbar {
+    height: 38px;             /* un poco más delgada */
+  }
+
+  .start-button {
+    font-size: 9px;
+    padding: 0 6px;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form button {
+    font-size: 12px;          /* más compacto */
+  }
+}
