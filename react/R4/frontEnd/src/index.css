@@ -175,6 +175,7 @@ body, html {
 .desktop-icon {
   width: 80px;
   text-align: center;
+  flex: 0 0 auto;
   cursor: pointer;
   color: white;
   font-size: 14px;
