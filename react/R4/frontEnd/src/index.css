@@ -165,13 +165,11 @@ body, html {
 }
 
 .desktop-icons {
-  position: relative;
   top: 1rem;
   left: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
   z-index: 1; /* detrás de las ventanas */
 }
 
