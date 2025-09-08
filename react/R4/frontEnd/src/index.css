@@ -296,6 +296,7 @@ body, html {
   .icon-image img {
     width: 35px;
     height: 35px;
+  }
   
 /* Media query para pantallas pequeñas */
 @media (max-width: 480px) {
