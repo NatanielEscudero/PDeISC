@@ -309,7 +309,7 @@ body, html {
   .desktop-icons {
     display: grid;
     grid-auto-flow: column;   /* apila verticalmente primero */
-    grid-auto-columns: 50px;
+    grid-auto-columns: 30px;
     grid-auto-rows: 70px;
     gap: 0.3rem;
     max-height: 70vh;
@@ -317,7 +317,7 @@ body, html {
   }
 
   .desktop-icon {
-    width: 50px;
+    width: 30px;
     font-size: 10px;
   }
 
