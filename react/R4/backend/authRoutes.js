@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 const router = express.Router();
 const SECRET = process.env.JWT_SECRET || "secreto123";
 
-// login falso (usuario hardcodeado)
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
   
@@ -16,3 +15,4 @@ router.post("/login", (req, res) => {
 });
 
 export default router;
+
