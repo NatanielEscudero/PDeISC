@@ -17,6 +17,7 @@ body, html {
   width: 100%;
   height: calc(100vh - 45px); /* deja espacio para la taskbar */
   overflow: hidden;
+  display: flex;
 }
 
 .window {
