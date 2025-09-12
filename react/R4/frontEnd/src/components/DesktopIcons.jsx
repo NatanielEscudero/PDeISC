@@ -42,14 +42,18 @@ export default function DesktopIcons() {
   }
 
   // Función para traer ventana al frente
-  const bringToFront = (id) => {
-    setZIndexCounter(prev => prev + 1);
-    setOpenWindows(openWindows.map(win => 
+const bringToFront = (id) => {
+  setOpenWindows(prevWindows => {
+    const newZIndex = zIndexCounter + 1;
+    setZIndexCounter(newZIndex);
+    
+    return prevWindows.map(win => 
       win.id === id 
-        ? { ...win, zIndex: zIndexCounter + 1 }
+        ? { ...win, zIndex: newZIndex }
         : win
-    ));
-  };
+    );
+  });
+};
 
   const toggleWindow = (icon) => {
     const existingWindow = openWindows.find(w => w.id === icon.id);
@@ -131,3 +135,4 @@ export default function DesktopIcons() {
     </div>
   );
 }
+
