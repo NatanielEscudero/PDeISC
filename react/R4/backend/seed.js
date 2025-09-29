@@ -4,25 +4,37 @@ import Project from "./models/project.js";
 
 dotenv.config();
 
-// Datos iniciales
+// Datos iniciales mejorados
 const projects = [
   {
-    title: "Portfolio Web",
-    description: "Sitio web personal hecho con React, Tailwind y Express.",
-    link: "https://miportfolio.com",
-    image: "https://via.placeholder.com/400x200.png?text=Portfolio"
+    title: "Portfolio Web Interactivo",
+    description: "Sistema operativo virtual construido con React y Node.js que simula un escritorio con ventanas arrastrables y sistema de archivos.",
+    technologies: "React, Node.js, Express, MongoDB, CSS3",
+    githubUrl: "https://github.com/tuusuario/portfolio",
+    demoUrl: "https://tuportfolio.com",
+    image: "https://via.placeholder.com/400x250/4A90E2/FFFFFF?text=Portfolio+Web",
+    category: "web",
+    featured: true
   },
   {
-    title: "API REST con Node.js",
-    description: "API para gestión de usuarios y productos con Express y MongoDB.",
-    link: "https://github.com/usuario/api-rest",
-    image: "https://via.placeholder.com/400x200.png?text=API+REST"
+    title: "API REST Avanzada",
+    description: "Backend escalable con autenticación JWT, upload de archivos, y documentación automática con Swagger.",
+    technologies: "Node.js, Express, MongoDB, JWT, Swagger",
+    githubUrl: "https://github.com/tuusuario/api-rest",
+    demoUrl: "https://api.tuapp.com/docs",
+    image: "https://via.placeholder.com/400x250/50E3C2/FFFFFF?text=API+REST",
+    category: "web",
+    featured: true
   },
   {
-    title: "Dashboard en React",
-    description: "Dashboard interactivo con gráficas y autenticación.",
-    link: "https://github.com/usuario/dashboard",
-    image: "https://via.placeholder.com/400x200.png?text=Dashboard"
+    title: "Dashboard en Tiempo Real",
+    description: "Aplicación de monitoreo en tiempo real con gráficos interactivos, notificaciones y modo oscuro.",
+    technologies: "React, Socket.io, Chart.js, Material-UI",
+    githubUrl: "https://github.com/tuusuario/dashboard",
+    demoUrl: "https://dashboard.tuapp.com",
+    image: "https://via.placeholder.com/400x250/9013FE/FFFFFF?text=Dashboard",
+    category: "web",
+    featured: false
   }
 ];
 
@@ -33,13 +45,18 @@ mongoose.connect(process.env.MONGO_URI)
 
     // Limpia la colección para evitar duplicados
     await Project.deleteMany({});
-    console.log("🧹 Colección limpia");
+    console.log("🧹 Colección de proyectos limpia");
 
-    // Inserta proyectos
-    await Project.insertMany(projects);
-    console.log("🎉 Datos insertados correctamente");
+    // Inserta proyectos con orden
+    const projectsWithOrder = projects.map((project, index) => ({
+      ...project,
+      order: index
+    }));
+    
+    await Project.insertMany(projectsWithOrder);
+    console.log("🎉 Proyectos de ejemplo insertados correctamente");
 
-    process.exit(); // Finaliza
+    process.exit();
   })
   .catch(err => {
     console.error("❌ Error en conexión:", err);
