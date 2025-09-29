@@ -6,7 +6,21 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// Configuración CORS específica para tu frontend
+app.use(cors({
+  origin: [
+    "https://p-de-isc.vercel.app", // Tu frontend en producción
+    "http://localhost:3000"        // Desarrollo local
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
+
+// Middleware para manejar preflight requests
+app.options('*', cors());
+
 app.use(express.json());
 
 // Conexión a MongoDB Atlas
@@ -30,6 +44,20 @@ app.get("/api/health", (req, res) => {
     status: "OK", 
     message: "Servidor funcionando correctamente",
     timestamp: new Date().toISOString()
+  });
+});
+
+// Ruta raíz para verificar que el servidor funciona
+app.get("/", (req, res) => {
+  res.json({ 
+    message: "Backend funcionando correctamente",
+    frontend: "https://p-de-isc.vercel.app",
+    endpoints: [
+      "/api/projects",
+      "/api/components", 
+      "/api/auth/login",
+      "/api/health"
+    ]
   });
 });
 

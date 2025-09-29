@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// Cambia esta URL por tu backend real
+// URL temporal con proxy CORS para testing
 const API_BASE = "https://p-de-isc-back.vercel.app/api";
 
 // Configuración global de axios
