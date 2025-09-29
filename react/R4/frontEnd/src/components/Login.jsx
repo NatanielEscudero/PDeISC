@@ -1,73 +1,89 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { apiService } from "../services/apiService";
 
 export default function Login({ onLogin, onLogout }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({ username: "", password: "" });
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("token"));
 
-  useEffect(() => {
-    setLoggedIn(!!localStorage.getItem("token"));
-  }, []);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (username === "admin" && password === "1234") {
-      localStorage.setItem("token", "dummy-token");
-      setLoggedIn(true);
-      setUsername("");
-      setPassword("");
-      setError("");
-      onLogin(); // notifica al escritorio que inició sesión
-    } else {
-      setError("Usuario o contraseña incorrecta");
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await apiService.auth.login(credentials);
+      
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token);
+        onLogin(); // Notificar a DesktopIcons
+      }
+    } catch (err) {
+      setError("Credenciales incorrectas");
+      console.error("Error de login:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setLoggedIn(false);
-    onLogout(); // notifica al escritorio que cerró sesión
+    onLogout(); // Notificar a DesktopIcons
   };
 
-  if (loggedIn) {
+  // Si ya está logueado, mostrar opción de logout
+  if (localStorage.getItem("token")) {
     return (
-      <div className="p-6 flex flex-col gap-4">
-        <h2 className="text-2xl font-bold">¡Bienvenido!</h2>
-        <button
-          onClick={handleLogout}
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-        >
-          Logout
-        </button>
+      <div className="login-container">
+        <div className="login-form">
+          <h2>Sesión Activa</h2>
+          <p>Ya has iniciado sesión en el sistema.</p>
+          <button onClick={handleLogout} className="logout-btn">
+            Cerrar Sesión
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-bold text-center">Login</h2>
-      {error && <p className="text-red-500">{error}</p>}
-      <input
-        type="text"
-        placeholder="Usuario"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        className="p-2 rounded border"
-      />
-      <input
-        type="password"
-        placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="p-2 rounded border"
-      />
-      <button
-        onClick={handleSubmit}
-        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
-      >
-        Entrar
-      </button>
+    <div className="login-container">
+      <div className="login-form">
+        <h2>Iniciar Sesión</h2>
+        <p>Accede al panel de administración</p>
+        
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label>Usuario:</label>
+            <input
+              type="text"
+              value={credentials.username}
+              onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+              placeholder="usuario"
+              required
+            />
+          </div>
+          
+          <div className="input-group">
+            <label>Contraseña:</label>
+            <input
+              type="password"
+              value={credentials.password}
+              onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+              placeholder="contraseña"
+              required
+            />
+          </div>
+          
+          {error && <div className="error-message">{error}</div>}
+          
+          <button type="submit" disabled={loading} className="login-btn">
+            {loading ? "Iniciando sesión..." : "Iniciar Sesión"}
+          </button>
+        </form>
+
+        
+      </div>
     </div>
   );
 }
