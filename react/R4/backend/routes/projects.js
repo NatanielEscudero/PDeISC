@@ -4,6 +4,12 @@ import Project from "../models/project.js";
 const router = express.Router();
 
 
+router.use((req, res, next) => {
+  console.log(`📦 Projects API: ${req.method} ${req.path}`);
+  next();
+});
+
+
 // GET /api/projects - Obtener todos los proyectos
 router.get("/", async (req, res) => {
   try {
