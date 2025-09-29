@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 export default function Window({ 
   title, 
@@ -7,58 +7,113 @@ export default function Window({
   onMinimize, 
   style, 
   onClick, 
-  onHeaderClick 
+  onHeaderClick,
+  onPositionChange
 }) {
   const [isMaximized, setIsMaximized] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const windowRef = useRef(null);
 
-  // Manejar el clic en el botón de maximizar
   const handleMaximize = () => {
     setIsMaximized(!isMaximized);
   };
 
-  // Manejar el clic en la ventana completa
-  const handleWindowClick = (e) => {
-    // Prevenir que se propague el clic a elementos hijos
+  // Iniciar arrastre - VERSIÓN MEJORADA
+  const startDrag = (e) => {
+    if (isMaximized) return;
+    
+    e.preventDefault();
     e.stopPropagation();
-    if (onClick) {
-      onClick();
-    }
-  };
+    
+    setIsDragging(true);
+    
+    const rect = windowRef.current.getBoundingClientRect();
+    setDragOffset({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
 
-  // Manejar el clic específicamente en la barra de título
-  const handleTitleBarClick = (e) => {
-    e.stopPropagation();
     if (onHeaderClick) {
       onHeaderClick();
     }
   };
 
+  // Durante el arrastre - VERSIÓN MEJORADA
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleMouseMove = (e) => {
+      e.preventDefault();
+      const newX = e.clientX - dragOffset.x;
+      const newY = e.clientY - dragOffset.y;
+
+      if (onPositionChange) {
+        onPositionChange(newX, newY);
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+    document.body.style.cursor = 'grabbing';
+    document.body.style.userSelect = 'none';
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.cursor = 'default';
+      document.body.style.userSelect = 'auto';
+    };
+  }, [isDragging, dragOffset, onPositionChange]);
+
+  const handleButtonClick = (e, callback) => {
+    e.stopPropagation();
+    if (callback) callback();
+  };
+
+  const handleWindowClick = (e) => {
+    e.stopPropagation();
+    if (onClick) onClick();
+  };
+
   return (
     <div
-      className={`window ${isMaximized ? "maximized" : ""}`}
+      ref={windowRef}
+      className={`window ${isMaximized ? "maximized" : ""} ${isDragging ? "dragging" : ""}`}
       style={{ 
         position: "absolute",
-        ...style,
-        cursor: 'default' // Cambiar cursor por defecto
+        ...style
       }}
-      onClick={handleWindowClick} // Clic en toda la ventana
+      onClick={handleWindowClick}
     >
-      {/* Barra superior */}
       <div 
         className="window-titlebar" 
-        onClick={handleTitleBarClick} // Clic específico en la barra de título
-        style={{ cursor: 'move' }} // Cambiar cursor para indicar que se puede arrastrar
+        onMouseDown={startDrag}
       >
         <span>{title}</span>
         <div className="window-buttons">
-          <button className="minimize" onClick={onMinimize}>🗕</button>
+          <button 
+            className="minimize" 
+            onClick={(e) => handleButtonClick(e, onMinimize)}
+          >
+            🗕
+          </button>
           <button
             className="maximize"
-            onClick={handleMaximize}
+            onClick={(e) => handleButtonClick(e, handleMaximize)}
           >
             {isMaximized ? "🗗" : "◻"}
           </button>
-          <button className="close" onClick={onClose}>x</button>
+          <button 
+            className="close" 
+            onClick={(e) => handleButtonClick(e, onClose)}
+          >
+            x
+          </button>
         </div>
       </div>
 

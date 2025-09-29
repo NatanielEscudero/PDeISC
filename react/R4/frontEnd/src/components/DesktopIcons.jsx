@@ -43,37 +43,41 @@ export default function DesktopIcons() {
 
   // Función para traer ventana al frente
 const bringToFront = (id) => {
-  setOpenWindows(prevWindows => {
-    const newZIndex = zIndexCounter + 1;
-    setZIndexCounter(newZIndex);
-    
-    return prevWindows.map(win => 
-      win.id === id 
-        ? { ...win, zIndex: newZIndex }
-        : win
+  setZIndexCounter(prev => {
+    const newZIndex = prev + 1;
+    setOpenWindows(prevWindows => 
+      prevWindows.map(win => 
+        win.id === id 
+          ? { ...win, zIndex: newZIndex }
+          : win
+      )
     );
+    return newZIndex;
   });
 };
 
-  const toggleWindow = (icon) => {
-    const existingWindow = openWindows.find(w => w.id === icon.id);
-    
-    if (existingWindow) {
-      // Si ya está abierta, traer al frente y restaurar si está minimizada
-      bringToFront(icon.id);
-      if (existingWindow.minimized) {
-        restoreWindow(icon.id);
-      }
-    } else {
-      // Si no está abierta, abrir nueva ventana con z-index alto
-      setZIndexCounter(prev => prev + 1);
-      setOpenWindows([...openWindows, { 
+const toggleWindow = (icon) => {
+  const existingWindow = openWindows.find(w => w.id === icon.id);
+  
+  if (existingWindow) {
+    // Si ya está abierta, traer al frente y restaurar si está minimizada
+    bringToFront(icon.id);
+    if (existingWindow.minimized) {
+      restoreWindow(icon.id);
+    }
+  } else {
+    // Si no está abierta, abrir nueva ventana con z-index alto
+    setZIndexCounter(prev => {
+      const newZIndex = prev + 1;
+      setOpenWindows(prevWindows => [...prevWindows, { 
         ...icon, 
         minimized: false, 
-        zIndex: zIndexCounter + 1 
+        zIndex: newZIndex 
       }]);
-    }
-  };
+      return newZIndex;
+    });
+  }
+};
 
   const closeWindow = (id) => {
     setOpenWindows(openWindows.filter(w => w.id !== id));
@@ -97,6 +101,17 @@ const bringToFront = (id) => {
     bringToFront(id);
   };
 
+  
+const updateWindowPosition = (id, newX, newY) => {
+  setOpenWindows(prevWindows => 
+    prevWindows.map(win => 
+      win.id === id 
+        ? { ...win, x: newX, y: newY }
+        : win
+    )
+  );
+};
+
   return (
     <div className="desktop">
       {/* ICONOS */}
@@ -112,25 +127,26 @@ const bringToFront = (id) => {
       {/* VENTANAS ABIERTAS */}
       <div className="windows-layer">
         {openWindows.map(win => !win.minimized && (
-          <Window
-            key={win.id}
-            title={win.label}
-            style={{ 
-              top: win.y, 
-              left: win.x,
-              zIndex: win.zIndex || 100 // Valor por defecto
-            }}
-            onClose={() => closeWindow(win.id)}
-            onMinimize={() => minimizeWindow(win.id)}
-            onClick={() => handleWindowClick(win.id)} // Nuevo prop
-            onHeaderClick={() => handleWindowClick(win.id)} // Para clic en el header
-          >
-            {win.id === "login"
-              ? <Login onLogin={handleLogin} onLogout={handleLogout} />
-              : win.component
-            }
-          </Window>
-        ))}
+  <Window
+    key={win.id}
+    title={win.label}
+    style={{ 
+      top: win.y, 
+      left: win.x,
+      zIndex: win.zIndex || 100
+    }}
+    onClose={() => closeWindow(win.id)}
+    onMinimize={() => minimizeWindow(win.id)}
+    onClick={() => handleWindowClick(win.id)}
+    onHeaderClick={() => handleWindowClick(win.id)}
+    onPositionChange={(x, y) => updateWindowPosition(win.id, x, y)} // ← Nuevo prop
+  >
+    {win.id === "login"
+      ? <Login onLogin={handleLogin} onLogout={handleLogout} />
+      : win.component
+    }
+  </Window>
+))}
       </div>
     </div>
   );
