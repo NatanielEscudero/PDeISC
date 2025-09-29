@@ -136,6 +136,80 @@ export const apiService = {
     }
   },
 
+  // En src/services/apiService.js, añade esto al objeto apiService:
+
+desktopIcons: {
+  getAll: async () => {
+    if (backendOnline) {
+      try {
+        const response = await api.get("/desktop-icons");
+        return response;
+      } catch (error) {
+        console.warn("Error obteniendo íconos, usando datos mock");
+        backendOnline = false;
+      }
+    }
+    await delay(300);
+    // Datos mock de íconos por defecto
+    const mockIcons = [
+      {
+        _id: "1",
+        title: "Sobre Mí",
+        type: "about",
+        icon: "/icons/about.png",
+        position: { x: 0, y: 0 },
+        order: 1,
+        isVisible: true,
+        windowConfig: { width: 500, height: 400 }
+      },
+      {
+        _id: "2",
+        title: "Proyectos",
+        type: "projects", 
+        icon: "/icons/projects.png",
+        position: { x: 0, y: 1 },
+        order: 2,
+        isVisible: true,
+        windowConfig: { width: 600, height: 500 }
+      },
+      {
+        _id: "3", 
+        title: "Skills",
+        type: "skills",
+        icon: "/icons/skills.png",
+        position: { x: 0, y: 2 },
+        order: 3,
+        isVisible: true,
+        windowConfig: { width: 500, height: 400 }
+      },
+      {
+        _id: "4",
+        title: "Contacto",
+        type: "contact",
+        icon: "/icons/contact.png", 
+        position: { x: 0, y: 3 },
+        order: 4,
+        isVisible: true,
+        windowConfig: { width: 450, height: 500 }
+      }
+    ];
+    return { data: mockIcons };
+  },
+
+  updatePosition: async (id, position) => {
+    if (backendOnline) {
+      try {
+        const response = await api.put(`/desktop-icons/${id}`, { position });
+        return response;
+      } catch (error) {
+        console.warn("Error actualizando posición, usando datos locales");
+      }
+    }
+    await delay(200);
+    return { data: { message: "Posición actualizada localmente", id, position } };
+  }
+},
+
   components: {
     getAll: async () => {
       if (backendOnline) {

@@ -5,9 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node index.js",
-    "seed": "node seed.js"
+    "start": "node api/index.js",
+    "dev": "node api/index.js",
+    "seed": "node seed.js",
+    "seed-icons": "node seedDesktopIcons.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,6 @@
     "jsonwebtoken": "^9.0.2"
   },
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   }
 }

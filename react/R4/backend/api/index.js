@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
+
 dotenv.config();
 
 const app = express();
@@ -32,11 +33,13 @@ mongoose.connect(process.env.MONGO_URI)
 import projectsRouter from "../routes/projects.js";
 import componentsRouter from "../routes/components.js";
 import authRouter from "../routes/authRoutes.js";
+import desktopIconsRouter from "../routes/desktopIcons.js";
 
 // Use routes
 app.use("/api/projects", projectsRouter);
 app.use("/api/components", componentsRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/desktop-icons", desktopIconsRouter);
 
 // Health check
 app.get("/api/health", (req, res) => {
