@@ -59,7 +59,7 @@ export default function Login({ onLogin, onLogout }) {
               type="text"
               value={credentials.username}
               onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
-              placeholder="admin"
+              placeholder="usuario"
               required
             />
           </div>
@@ -70,7 +70,7 @@ export default function Login({ onLogin, onLogout }) {
               type="password"
               value={credentials.password}
               onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-              placeholder="1234"
+              placeholder="contraseña"
               required
             />
           </div>
@@ -82,11 +82,7 @@ export default function Login({ onLogin, onLogout }) {
           </button>
         </form>
 
-        <div className="login-info">
-          <p><strong>Credenciales de prueba:</strong></p>
-          <p>Usuario: <code>admin</code></p>
-          <p>Contraseña: <code>1234</code></p>
-        </div>
+        
       </div>
     </div>
   );
