@@ -1,7 +1,8 @@
 import express from "express";
-import Project from "../models/project.js";
+import Project from "../models/project.js"; 
 
 const router = express.Router();
+
 
 // GET /api/projects - Obtener todos los proyectos
 router.get("/", async (req, res) => {
