@@ -1,92 +1,44 @@
 import { useEffect, useState } from "react";
-import { apiService } from "../services/apiService";
+import axios from "axios";
+import { motion } from "framer-motion";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadProjects = async () => {
-      try {
-        const response = await apiService.projects.getAll();
-        setProjects(response.data);
-      } catch (err) {
-        console.error("Error cargando proyectos:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadProjects();
+    axios.get("https://p-de-isc-back.vercel.app/api/projects") // URL de tu backend
+      .then(res => setProjects(res.data))
+      .catch(err => console.error(err));
   }, []);
 
-  // ... resto del código
-  if (loading) {
-    return (
-      <div className="window-content-inner">
-        <h2>Mis Proyectos</h2>
-        <p>Cargando proyectos...</p>
-      </div>
-    );
-  }
-
   return (
-    <div className="window-content-inner">
-      <h2>Mis Proyectos</h2>
-      
-      {projects.length === 0 ? (
-        <p>No hay proyectos para mostrar.</p>
-      ) : (
-        <div className="projects-grid">
-          {projects.map((project) => (
-            <div key={project._id} className="project-card">
-              {project.image && (
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="project-image"
-                />
-              )}
-              
-              <h3 className="project-title">{project.title}</h3>
-              <p className="project-description">{project.description}</p>
-              
-              {project.technologies && (
-                <div className="technologies">
-                  {project.technologies.split(',').map((tech, index) => (
-                    <span key={index} className="tech-tag">
-                      {tech.trim()}
-                    </span>
-                  ))}
-                </div>
-              )}
-              
-              <div className="project-links">
-                {project.githubUrl && (
-                  <a 
-                    href={project.githubUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="project-link"
-                  >
-                    GitHub
-                  </a>
-                )}
-                {project.demoUrl && (
-                  <a 
-                    href={project.demoUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="project-link"
-                  >
-                    Demo
-                  </a>
-                )}
-              </div>
-            </div>
+    <section id="projects" className="py-20">
+      <div className="max-w-5xl mx-auto text-center">
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.8 }}
+          className="text-3xl font-bold mb-6"
+        >
+          Proyectos
+        </motion.h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {projects.map((p, i) => (
+            <motion.div 
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              className="p-6 bg-white shadow-lg rounded-xl"
+            >
+              {p.image && <img src={p.image} alt={p.title} className="rounded-lg mb-3"/>}
+              <h3 className="text-xl font-semibold">{p.title}</h3>
+              <p className="text-gray-600">{p.description}</p>
+              <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-indigo-600 mt-2 block">Ver más</a>
+            </motion.div>
           ))}
         </div>
-      )}
-    </div>
+      </div>
+    </section>
   );
 }
+
+

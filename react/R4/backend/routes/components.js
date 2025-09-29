@@ -3,11 +3,6 @@ import Component from "../models/component.js";
 
 const router = express.Router();
 
-router.use((req, res, next) => {
-  console.log(`🔧 Components API: ${req.method} ${req.path}`);
-  next();
-});
-
 // Obtener todos los componentes
 router.get("/", async (req, res) => {
   try {
