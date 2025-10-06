@@ -12,7 +12,7 @@ const app = express();
 app.use(cors({
   origin: [
     "https://p-de-isc.vercel.app",
-    "https://p-de-isc-git-main-nataniel-escudeross-projects.vercel.app", 
+    "https://p-de-isc-git-main-nataniel-escuderos-projects.vercel.app", 
     "http://localhost:3000"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -80,5 +80,6 @@ app.use((err, req, res, next) => {
     message: process.env.NODE_ENV === 'production' ? 'Something went wrong!' : err.message
   });
 });
+
 
 export default app;
