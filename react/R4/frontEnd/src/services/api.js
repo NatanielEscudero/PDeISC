@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Usa la URL de tu backend en Vercel directamente
-const API_BASE_URL = 'https://p-de-isc-back.vercel.app/';
+const API_BASE_URL = 'https://pdeisc-ewlw.onrender.com';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -27,5 +27,6 @@ api.interceptors.response.use(
 );
 
 export default api;
+
 
 
