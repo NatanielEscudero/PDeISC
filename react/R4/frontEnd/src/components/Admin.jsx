@@ -25,6 +25,7 @@ export default function Admin({ onComponentsUpdate }) {
     title: "",
     content: "",
     icon: "",
+    isActive: true,
     windowConfig: {
       width: 400,
       height: 300,
@@ -419,4 +420,5 @@ export default function Admin({ onComponentsUpdate }) {
       )}
     </div>
   );
+
 }
