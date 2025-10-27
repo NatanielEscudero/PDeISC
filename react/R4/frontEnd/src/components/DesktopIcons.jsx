@@ -18,16 +18,31 @@ export default function DesktopIcons() {
     loadDynamicIcons();
   }, []);
 
-  const loadDynamicIcons = async () => {
-    try {
-      const response = await apiService.components.getAll();
-      setDynamicIcons(response.data.filter(comp => comp.isActive));
-    } catch (error) {
-      console.error("Error cargando íconos dinámicos:", error);
-    } finally {
-      setLoading(false);
+const loadDynamicIcons = async () => {
+  try {
+    console.log("Cargando íconos dinámicos...");
+    const response = await apiService.components.getAll();
+
+    if (!response || !response.data) {
+      console.warn("Respuesta inválida del servidor:", response);
+      setDynamicIcons([]);
+      return;
     }
-  };
+
+    const icons = Array.isArray(response.data)
+      ? response.data
+      : response.data.components || [];
+
+    console.log("Íconos recibidos:", icons);
+
+    setDynamicIcons(icons.filter(comp => comp.isActive));
+  } catch (error) {
+    console.error("Error cargando íconos dinámicos:", error);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   // ... el resto del código se mantiene igual
 
@@ -211,4 +226,5 @@ export default function DesktopIcons() {
       </div>
     </div>
   );
+
 }
